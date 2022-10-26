@@ -13,6 +13,7 @@ int main()
 
   int sockid;
 
+
   // creates socket and returns error if fails
   if ((sockid = socket(AF_INET, SOCK_STREAM, 0)) < 0) 
   {
@@ -27,4 +28,11 @@ int main()
     return -1;
   }
 
+  if (listen(sockid, 100) < 0)
+  {
+    perror("Failed to listen");
+    return -1;
+  }
+
+  printf("Server started on port %d\n", PORT);
 }
